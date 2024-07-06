@@ -17,6 +17,13 @@ include("connect.php");
     <link href="
     https://cdn.jsdelivr.net/npm/sweetalert2@11.12.1/dist/sweetalert2.min.css
     " rel="stylesheet">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+     rel="stylesheet" 
+     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+     crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -33,17 +40,18 @@ include("connect.php");
           icon: "success"
           });
       </script>
-<?php
-        $query=mysqli_query($conn, "SELECT users.* FROM `users` WHERE users.email='$email'");
-        while($row=mysqli_fetch_array($query)){
-            echo $row['firstName'].' '.$row['lastName'];
-        }
+     <?php
+       $query=mysqli_query($conn, "SELECT users.* FROM `users` WHERE users.email='$email'");
+       while($row=mysqli_fetch_array($query)){
+           echo $row['firstName'].' '.$row['lastName'];
        }
-       ?>
+      }
+       ?> 
        :)
       </p>
       <a href="logout.php">Logout</a>
-    </div>
+    </div> -->
+   <!-- navbar -->
 
 </body>
 </html>

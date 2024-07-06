@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("connect.php");
-
+include("register.php")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +22,9 @@ include("connect.php");
 
 <body>
 <?php 
-       if(isset($_SESSION['email'])){
+       
+
+       if($showAlert){
         ?>
                       <script>
                     Swal.fire({
