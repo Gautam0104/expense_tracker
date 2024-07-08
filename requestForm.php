@@ -17,14 +17,12 @@
             color: #000;
             overflow-x: hidden;
             height: 100%;
-            /* background-image: url("https://i.imgur.com/GMmCQHC.png"); */
             background-repeat: no-repeat;
             background-size: 100% 100%
         }
 
         .card {
             padding: 30px 40px;
-            /* margin-top: 60px; */
             margin-bottom: 60px;
             border: none !important;
             box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2)
@@ -83,7 +81,7 @@
 
 <body>
     <?php
-    include 'connect.php';
+    include ("helper/connect.php");
     if (isset($_POST["request"])) {
         $firstName = $_POST['fname'];
         $lastName = $_POST['lname'];
@@ -93,14 +91,17 @@
         $ans = $_POST['ans'];
         $insertQuery = "INSERT INTO users_data(firstName,lastName,email,mobile,job_title,query)
                        VALUES ('$firstName','$lastName','$email','$mobile' ,'$jobTitle' ,'$ans')";
-        if ($conn->query($insertQuery) == TRUE) {
 
+        if ($conn->query($insertQuery) == TRUE) {
+            if (!empty($firstName)) {
+                echo "write some thing";
+            }
             ?>
 
             <script>
                 Swal.fire({
                     title: "Success",
-                    text: "UserId Already Exists",
+                    text: "Data Saved Successfully",
                     icon: "success"
                 }); 
             </script>
@@ -111,58 +112,68 @@
             echo "not working";
         }
     }
+
     ?>
     <!-- html -->
-    <div class="container-fluid px-1 py-5 mx-auto">
-        <div class="row d-flex justify-content-center">
-            <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+    <!-- navbar -->
+    <?php include "navbar.php"; ?>
+    <!--Main layout-->
+    <main style="margin-top: 58px;">
+        <div class="container-fluid px-1 py-5 mx-auto">
+            <div class="row d-flex justify-content-center">
+                <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
 
-                <div class="card">
-                    <h5 class="text-center mb-4">Make a Request that you want..</h5>
-                    <form class="form-card" method="post">
-                        <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label
-                                    class="form-control-label px-3">First name<span class="text-danger">
-                                        *</span></label> <input type="text" id="fname" name="fname"
-                                    placeholder="Enter your first name" onblur="validate(1)"> </div>
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label
-                                    class="form-control-label px-3">Last name<span class="text-danger"> *</span></label>
-                                <input type="text" id="lname" name="lname" placeholder="Enter your last name"
-                                    onblur="validate(2)">
+                    <div class="card">
+                        <h5 class="text-center mb-4">Make a Request that you want..</h5>
+                        <form class="form-card" method="post">
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex"> <label
+                                        class="form-control-label px-3">First name<span class="text-danger">
+                                            *</span></label> <input type="text" id="fname" name="fname"
+                                        placeholder="Enter your first name" onblur="validate(1)"> </div>
+                                <div class="form-group col-sm-6 flex-column d-flex"> <label
+                                        class="form-control-label px-3">Last name<span class="text-danger">
+                                            *</span></label>
+                                    <input type="text" id="lname" name="lname" placeholder="Enter your last name"
+                                        onblur="validate(2)">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label
-                                    class="form-control-label px-3">Business email<span class="text-danger">
-                                        *</span></label> <input type="text" id="email" name="email" placeholder=""
-                                    onblur="validate(3)"> </div>
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label
-                                    class="form-control-label px-3">Phone number<span class="text-danger">
-                                        *</span></label> <input type="text" id="mob" name="mob" placeholder=""
-                                    onblur="validate(4)"> </div>
-                        </div>
-                        <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label
-                                    class="form-control-label px-3">Job title<span class="text-danger"> *</span></label>
-                                <input type="text" id="job" name="job" placeholder="" onblur="validate(5)">
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex"> <label
+                                        class="form-control-label px-3">Business email<span class="text-danger">
+                                            *</span></label> <input type="text" id="email" name="email" placeholder=""
+                                        onblur="validate(3)"> </div>
+                                <div class="form-group col-sm-6 flex-column d-flex"> <label
+                                        class="form-control-label px-3">Phone number<span class="text-danger">
+                                            *</span></label> <input type="text" id="mob" name="mob" placeholder=""
+                                        onblur="validate(4)"> </div>
                             </div>
-                        </div>
-                        <div class="row justify-content-between text-left">
-                            <div class="form-group col-12 flex-column d-flex"> <label
-                                    class="form-control-label px-3">Write your message here..<span class="text-danger">
-                                        *</span></label> <textarea type="text" id="ans" name="ans" placeholder=""
-                                    onblur="validate(6)"></textarea> </div>
-                        </div>
-                        <div class="row justify-content-end">
-                            <div class="form-group col-sm-6"> <button type="submit" class="btn-block "
-                            style="background: rgb(125,125,235);"
-                                    name="request">Request </button> </div>
-                        </div>
-                    </form>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex"> <label
+                                        class="form-control-label px-3">Job title<span class="text-danger">
+                                            *</span></label>
+                                    <input type="text" id="job" name="job" placeholder="" onblur="validate(5)">
+                                </div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-12 flex-column d-flex"> <label
+                                        class="form-control-label px-3">Write your message here..<span
+                                            class="text-danger">
+                                            *</span></label> <textarea type="text" id="ans" name="ans" placeholder=""
+                                        onblur="validate(6)"></textarea> </div>
+                            </div>
+                            <div class="row justify-content-end">
+                                <div class="form-group col-sm-6"> <button type="submit" class="btn-block "
+                                        style="background: rgb(125,125,235);" name="request">Request </button> </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+    <!--/Main layout-->
+
     <!-- javascript -->
     <script>
         function validate(val) {
@@ -246,6 +257,7 @@
 
             return flag;
         }
+        console.log(validate());
     </script>
 
 
