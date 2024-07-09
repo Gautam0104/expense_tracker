@@ -64,10 +64,16 @@ include ("helper/connect.php");
           <a href="homepage.php" class="list-group-item list-group-item-action py-2 ripple active">
             <i class="fas fa-home fa-fw me-3"></i><span>Home</span>
           </a>
-          <a href="requestForm.php" class="list-group-item list-group-item-action py-2 ripple"><i
-              class="fas  fa-book fa-fw me-3"></i><span>Request Form</span></a>
-          <a href="showResposnse.php" class="list-group-item list-group-item-action py-2 ripple"><i
-              class="fas fa-table fa-fw me-3"></i><span>View Response</span></a>
+          <a href="addEmp.php" class="list-group-item list-group-item-action py-2 ripple"><i
+              class="fas  fa-user fa-fw me-3"></i><span>Add Employee</span></a>
+          <a href="expenses.php" class="list-group-item list-group-item-action py-2 ripple"><i
+              class="fas fa-user fa-fw me-3"></i><span>Add Expenses</span></a>
+          <a href="viewEmp.php" class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fas fa-book fa-fw me-3"></i><span>View Employee</span>
+          </a>
+          <a href="viewExp.php" class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fas fa-book fa-fw me-3"></i><span>View Expenses</span>
+          </a>
           <a href="#" class="list-group-item list-group-item-action py-2 ripple">
             <i class="fas fa-chart-pie fa-fw me-3"></i><span>Help</span>
           </a>
@@ -96,7 +102,7 @@ include ("helper/connect.php");
         <ul class="navbar-nav ms-auto d-flex flex-row">
 
           <li class="nav-item ">
-            <a class="nav-link ms-4 me-4 me-lg-3 active " href="#">Home</a>
+            <a class="nav-link ms-4 me-4 me-lg-3 active " href="homepage.php">Home</a>
 
           </li>
           <li class="nav-item ">

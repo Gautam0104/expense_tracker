@@ -6,18 +6,35 @@
 
 class UserDao{
 
-    public $conn;
+    public $dbconn;
 
 
-    function __construct($conn){
+    function __construct($dbconn){
      
-        $this->conn=$conn;       
+        $this->dbconn=$dbconn;       
     }
 
     //  get subjects 
     function get_users(){
         $query="select * from users_data";
-        $statement=$this->conn->prepare($query);
+        $statement=$this->dbconn->prepare($query);
+        $statement->execute();
+        $result=$statement->fetchAll();
+        return $result;
+
+    }
+    function get_emp(){
+        $query="select * from emp_detail";
+        $statement=$this->dbconn->prepare($query);
+        $statement->execute();
+        $result=$statement->fetchAll();
+        return $result;
+
+    }
+
+    function get_exp(){
+        $query="select * from expenses";
+        $statement=$this->dbconn->prepare($query);
         $statement->execute();
         $result=$statement->fetchAll();
         return $result;

@@ -11,7 +11,7 @@ include ("helper/register.php")
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register & Login</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <script src="
     https://cdn.jsdelivr.net/npm/sweetalert2@11.12.1/dist/sweetalert2.all.min.js
     "></script>
@@ -108,7 +108,7 @@ include ("helper/register.php")
       <button id="signUpButton">Sign Up</button>
     </div>
   </div>
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>
