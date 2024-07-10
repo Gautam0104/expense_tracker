@@ -12,6 +12,21 @@
     https://cdn.jsdelivr.net/npm/sweetalert2@11.12.1/dist/sweetalert2.min.css
     " rel="stylesheet">
 </head>
+<style>
+    .tryAgain {
+        width: 100%;
+        height: 700px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .tryAgain li,
+    a {
+        list-style: none;
+        text-decoration: none;
+    }
+</style>
 
 <body>
 
@@ -38,7 +53,9 @@
                     title: "Warning",
                     text: "UserId Already Exists",
                     icon: "warning"
-                }); 
+                }).then(function () {
+                        window.location = "../index.php";
+\                    });  
             </script>
             <?php
         } else {
@@ -46,12 +63,19 @@
                        VALUES ('$firstName','$lastName','$email','$password')";
             if ($conn->query($insertQuery) == TRUE) {
                 ?>
-
+                <script>
+                    Swal.fire({
+                        title:"Success",
+                        text: "Successfully Registered",
+                        icon: "success"
+                    }).then(function () {
+                        window.location = "../index.php";
+                    }) 
+                </script>
 
                 <?php
-                // sleep(5);
-                $showAlert = true;
-                header("Location: ../index.php");
+               
+ 
             } else {
                 echo "Error:" . $conn->error;
             }
@@ -79,14 +103,22 @@
                 Swal.fire({
                     title: "Error",
                     text: "Wrong Credential",
-                    icon: "error"
+                    icon: "error",
+                }).then(function () {
+                    window.location = "../index.php";
                 });
             </script>
+            <div class="container tryAgain">
+                <li>
+                    <a href="../index.php">Try Again!</a>
+                </li>
+            </div>
             <?php
         }
 
     }
     ?>
+     
 </body>
 
 </html>

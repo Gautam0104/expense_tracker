@@ -1,10 +1,7 @@
 <?php
 session_start();
 include ("helper/connect.php");
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,8 +19,6 @@ include ("helper/connect.php");
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
-
-
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <style>
     body {
@@ -77,82 +72,50 @@ include ("helper/connect.php");
           <a href="#" class="list-group-item list-group-item-action py-2 ripple">
             <i class="fas fa-chart-pie fa-fw me-3"></i><span>Help</span>
           </a>
-
         </div>
       </div>
     </nav>
     <!-- Sidebar -->
-
-
     <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-
       <div class="container-fluid">
-
         <button data-mdb-button-init class="navbar-toggler" type="button" data-mdb-collapse-init
           data-mdb-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
           aria-label="Toggle navigation">
           <i class="fas fa-bars"></i>
         </button>
-
         <!-- Brand -->
         <a class="navbar-brand" href="#">
           Expense Tracker
-
         </a>
         <ul class="navbar-nav ms-auto d-flex flex-row">
-
           <li class="nav-item ">
             <a class="nav-link ms-4 me-4 me-lg-3 active " href="homepage.php">Home</a>
-
           </li>
           <li class="nav-item ">
             <a class="nav-link ms-4 me-4  me-lg-3" href="#">About</a>
-
           </li>
           <li class="nav-item ">
             <a class="nav-link ms-4 me-4 me-lg-3" href="#">Services</a>
-
           </li>
           <li class="nav-item ">
             <a class="nav-link ms-4 me-4 me-lg-3" href="#">Contact</a>
-
           </li>
           <li class="nav-item ">
             <a class="nav-link btn btn-danger" href="helper/logout.php">Logout</a>
-
           </li>
-
-
-
-
-
-
         </ul>
       </div>
-
     </nav>
-
   </header>
 
-
-
-
+  <!-- js -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-
-  <script src="js/sb-admin-2.min.js"></script>
-
-  
+  <script src="js/ex-admin-2.min.js"></script>
   <script src="vendor/chart.js/Chart.min.js"></script>
-
- 
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
-
 </body>
 
 </html>
