@@ -12,6 +12,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/form.css">
+   
 </head>
 
 <body>
@@ -30,13 +31,16 @@
         <div class="container">
             <input class="form-control" id="myInput" type="text" placeholder="Search..">
         </div>
+        <div class="container">
+        
+        </div>
         <div class="card m-4 shadow">
             <h5 class="text-center m-4">EMPLOYEE EXPENSES DETAIL</h5>
-            <table class="table m-0 ">
+            <table class="table m-0 " id="sortTable">
                 <thead>
                     <tr>
-                        <th>Employee Name</th>
-                        <th>Expense Date</th>
+                        <th onclick="w3.sortHTML('#sortTable', '.item', 'td:nth-child(1)')" style="cursor:pointer">Employee Name</th>
+                        <th onclick="w3.sortHTML('#sortTable', '.item', 'td:nth-child(2)')" style="cursor:pointer">Expense Date</th>
                         <th>Expense Time</th>
                         <th>Expense Amount</th>
                         <th>Expense Reason</th>
@@ -46,7 +50,7 @@
                     <?php
                     foreach ($expenses as $key => $value) {
                         ?>
-                        <tr>
+                        <tr class="item">
                             <td><?= $value['emp_name'] ?></td>
                             <td><?= $value['exp_d'] ?></td>
                             <td><?= $value['exp_t'] ?></td>
@@ -64,6 +68,8 @@
     
     <!-- filter data js -->
     <script src="js/filter.js"></script>
+      <!-- sort data js -->
+  <script src="js/sortData.js"></script>
 
 </body>
 

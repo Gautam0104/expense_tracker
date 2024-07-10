@@ -12,6 +12,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/form.css">
+        
 </head>
   
 <body>
@@ -35,10 +36,10 @@
   
         <div class="card m-4 ">
         <h5 class="text-center m-4">EMPLOYEE DETAIL</h5>
-            <table class="table m-0 ">
+            <table class="table m-0 " id="sortTable">
                 <thead >
                     <tr>
-                        <th>First Name</th>
+                        <th onclick="w3.sortHTML('#sortTable', '.item', 'td:nth-child(1)')" style="cursor:pointer">First Name</th>
                         <th>Last Name</th>
                         <th>Email Adress</th>
                         <th>Mobile Number</th>
@@ -51,7 +52,7 @@
                     <?php
                     foreach ($users as $key => $value) {
                         ?>
-                        <tr>
+                        <tr class="item">
                             <td><?= $value['firstName'] ?></td>
                             <td><?= $value['lastName'] ?></td>
                             <td><?= $value['email'] ?></td>
@@ -71,6 +72,8 @@
     
   <!-- filter data js -->
   <script src="js/filter.js"></script>
+  <!-- sort data js -->
+  <script src="js/sortData.js"></script>
 </body>
 
 </html>
