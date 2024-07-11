@@ -77,7 +77,7 @@
                 <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
 
                     <div class="card">
-                        <h5 class="text-center mb-4">ADD YOUR EXPENSES DETAIL</h5>
+                        <h5 class="text-center mb-4">ADD EMPLOYEE EXPENSES DETAIL</h5>
                         <form class="form-card" method="post">
                             <div class="row justify-content-between text-left">
                                 <div class="form-group col-sm-12 flex-column d-flex"> <label

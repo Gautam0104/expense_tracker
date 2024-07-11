@@ -46,11 +46,12 @@ include ("helper/connect.php");
   </style>
 </head>
 
-<body>
-  <!--Navbar-->
-  <header>
+<body id="page-top" class="sidebar-toggled">
+<div id="wrapper">
+    <!--Navbar-->
+    <header>
     <!-- Sidebar -->
-    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white" id="accordionSidebar">
       <div class="position-sticky">
         <div class="list-group list-group-flush mx-3 mt-4">
           <a href="#" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
@@ -107,6 +108,7 @@ include ("helper/connect.php");
       </div>
     </nav>
   </header>
+</div>
 
   <!-- js -->
   <script src="vendor/jquery/jquery.min.js"></script>

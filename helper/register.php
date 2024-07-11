@@ -12,21 +12,6 @@
     https://cdn.jsdelivr.net/npm/sweetalert2@11.12.1/dist/sweetalert2.min.css
     " rel="stylesheet">
 </head>
-<style>
-    .tryAgain {
-        width: 100%;
-        height: 700px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .tryAgain li,
-    a {
-        list-style: none;
-        text-decoration: none;
-    }
-</style>
 
 <body>
 
@@ -40,7 +25,7 @@
     if (isset($_POST['signUp'])) {
         $firstName = $_POST['fName'];
         $lastName = $_POST['lName'];
-        $email = $_POST['email'];
+        $email = $_POST['username'];
         $password = $_POST['password'];
         $password = md5($password);
 
@@ -85,19 +70,31 @@
     }
 
     if (isset($_POST['signIn'])) {
-        $email = $_POST['email'];
+        $email = $_POST['username'];
         $password = $_POST['password'];
         $password = md5($password);
 
-        $sql = "SELECT * FROM users WHERE email='$email' and password='$password'";
+        $sql = "SELECT * FROM users WHERE email='$email' and password='$password' and admin_id=1";
+        $sql2="SELECT * FROM users WHERE email='$email' and password='$password' and admin_id=2";
         $result = $conn->query($sql);
+        $result2 = $conn->query($sql2);
         if ($result->num_rows > 0) {
             session_start();
             $row = $result->fetch_assoc();
             $_SESSION['email'] = $row['email'];
             header("Location: ../homepage.php");
             exit();
-        } else {
+            
+           
+        } 
+        elseif($result2->num_rows > 0){
+            session_start();
+            $row = $result->fetch_assoc();
+            $_SESSION['email'] = $row['email'];
+            header("Location: ../newAd.php");
+            exit(); 
+        }
+        else {
             ?>
             <script>
                 Swal.fire({
@@ -108,13 +105,10 @@
                     window.location = "../index.php";
                 });
             </script>
-            <div class="container tryAgain">
-                <li>
-                    <a href="../index.php">Try Again!</a>
-                </li>
-            </div>
+     
             <?php
         }
+    
 
     }
     ?>

@@ -53,8 +53,8 @@ include ("helper/register.php")
       </div>
       <div class="input-group">
         <i class="fas fa-envelope"></i>
-        <input type="email" name="email" id="email" autocomplete="new-email" placeholder="Email" required>
-        <label for="email">Email</label>
+        <input type="email" name="username" id="email" autocomplete="new-email" placeholder="Email" required>
+        <label for="email">Username</label>
       </div>
       <div class="input-group">
         <i class="fas fa-lock"></i>
@@ -82,8 +82,8 @@ include ("helper/register.php")
     <form method="post" action="helper/register.php">
       <div class="input-group">
         <i class="fas fa-envelope"></i>
-        <input type="email" name="email" id="email" autocomplete="new-email" placeholder="Email" required>
-        <label for="email">Email</label>
+        <input type="email" name="username" id="email" autocomplete="new-email" placeholder="Email" required>
+        <label for="email">Username</label>
       </div>
       <div class="input-group">
         <i class="fas fa-lock"></i>
