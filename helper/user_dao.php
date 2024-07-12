@@ -16,7 +16,7 @@ class UserDao{
 
     //  get subjects 
     function get_users(){
-        $query="select * from users_data";
+        $query="select * from users";
         $statement=$this->dbconn->prepare($query);
         $statement->execute();
         $result=$statement->fetchAll();

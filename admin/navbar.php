@@ -1,3 +1,7 @@
+<?php
+session_start();
+include "../helper/connect.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,11 +15,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.min.css" rel="stylesheet">
   <style>
     body {
       background-color: #fbfbfb;
@@ -53,17 +57,14 @@
           <a href="#" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
             <i class="fas fa-tachometer-alt fa-fw me-3"></i><span> dashboard</span>
           </a>
-          <a href="homepage.php" class="list-group-item list-group-item-action py-2 ripple active">
+          <a href="./" class="list-group-item list-group-item-action py-2 ripple active">
             <i class="fas fa-home fa-fw me-3"></i><span>Home</span>
           </a>
-          <a href="addAdmin.php" class="list-group-item list-group-item-action py-2 ripple"><i
-              class="fas  fa-user fa-fw me-3"></i><span>Add Admin</span></a>
-          <a href="expenses.php" class="list-group-item list-group-item-action py-2 ripple"><i
+          
+          <a href="./expenses.php" class="list-group-item list-group-item-action py-2 ripple"><i
               class="fas fa-user fa-fw me-3"></i><span>Add Expenses</span></a>
-          <a href="viewEmp.php" class="list-group-item list-group-item-action py-2 ripple">
-            <i class="fas fa-book fa-fw me-3"></i><span>View Admin</span>
-          </a>
-          <a href="viewExp.php" class="list-group-item list-group-item-action py-2 ripple">
+          
+          <a href="./viewExp.php" class="list-group-item list-group-item-action py-2 ripple">
             <i class="fas fa-book fa-fw me-3"></i><span>View Expenses</span>
           </a>
           <a href="#" class="list-group-item list-group-item-action py-2 ripple">

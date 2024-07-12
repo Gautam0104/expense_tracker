@@ -40,7 +40,7 @@
                     icon: "warning"
                 }).then(function () {
                         window.location = "../index.php";
-\                    });  
+                    });  
             </script>
             <?php
         } else {
@@ -75,23 +75,23 @@
         $password = md5($password);
 
         $sql = "SELECT * FROM users WHERE email='$email' and password='$password' and admin_id=1";
-        $sql2="SELECT * FROM users WHERE email='$email' and password='$password' and admin_id=2";
+        $query="SELECT * FROM users WHERE email='$email' and password='$password' and admin_id=2";
         $result = $conn->query($sql);
-        $result2 = $conn->query($sql2);
-        if ($result->num_rows > 0) {
+        $res = $conn->query($query);
+        if ($result ->num_rows > 0) {
             session_start();
-            $row = $result->fetch_assoc();
+            $row = $result ->fetch_assoc();
             $_SESSION['email'] = $row['email'];
             header("Location: ../homepage.php");
-            exit();
+            exit(); 
             
            
         } 
-        elseif($result2->num_rows > 0){
+        elseif($res ->num_rows > 0){
             session_start();
-            $row = $result->fetch_assoc();
+            $row = $res->fetch_assoc();
             $_SESSION['email'] = $row['email'];
-            header("Location: ../newAd.php");
+            header("Location: ../admin/home.php");
             exit(); 
         }
         else {

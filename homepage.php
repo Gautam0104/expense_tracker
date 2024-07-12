@@ -35,11 +35,23 @@ include("helper/connect.php");
 </head>
 <body>
 
-<?php include "navbar.php"; ?>
+<?php include ("navbar.php"); ?>
 
 
 <!--Main layout-->
 <main style="margin-top: 58px;">
+<p  style="font-size:50px; font-weight:bold;">
+Hello 
+<?php 
+       if(isset($_SESSION['email'])){
+        $email=$_SESSION['email'];
+        $query=mysqli_query($conn, "SELECT users.* FROM `users` WHERE users.email='$email'");
+        while($row=mysqli_fetch_array($query)){
+            echo $row['firstName'].' '.$row['lastName'];
+        }
+       }
+       ?>
+       </p>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
