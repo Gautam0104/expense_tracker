@@ -1,3 +1,7 @@
+<?php
+include "session.php";
+if($email){
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -138,3 +142,9 @@
 </body>
 
 </html>
+<?php
+
+}else{
+    header("Location: index.php");
+}
+?>

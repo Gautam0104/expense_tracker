@@ -1,14 +1,26 @@
 <?php
-include "session.php";
-if($email){
-    ?>
+$id = $_GET['id'];
+$admin = $_GET['name'];
+$adminlast = $_GET['lastname'];
+$adminemail = $_GET['emailAd'];
+$adminpass = $_GET['pass'];
+$adminrole = $_GET['role'];
+
+//  echo $id;
+//  echo $admin;
+//  echo $adminlast;
+//  echo $adminemail;
+//  echo $adminpass;
+//  echo $adminrole;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADD|ADMIN</title>
+    <title>UPDATE ADMIN</title>
     <script src="
     https://cdn.jsdelivr.net/npm/sweetalert2@11.12.1/dist/sweetalert2.all.min.js
     "></script>
@@ -20,55 +32,51 @@ if($email){
 </head>
 
 <body>
-<?php
+    <?php
 
-include 'helper/connect.php';
+    include 'helper/connect.php';
 
 
-if (isset($_POST['submit'])) {
-    $firstName = $_POST['fname'];
-    $lastName = $_POST['lname'];
-    $email = $_POST['username'];
-    $password = $_POST['password'];
-    $password = md5($password);
-    $role = $_POST['role'];
+    if (isset($_POST['submit'])) {
+        $firstName = $_POST['fname'];
+        $lastName = $_POST['lname'];
+        $email = $_POST['username'];
+        $password = $_POST['password'];
+        $password = md5($password);
+        $role = $_POST['role'];
 
-    $checkEmail = "SELECT * From users where email='$email'";
-    $result = $conn->query($checkEmail);
-    if ($result->num_rows > 0) {
-        ?>
-        <script>
-            Swal.fire({
-                title: "Warning",
-                text: "UserId Already Exists",
-                icon: "warning"
-            }); 
-        </script>
-        <?php
-    } else {
-        $insertQuery = "insert into users(admin_id,firstName,lastName,email,password)
-                   values('$role','$firstName','$lastName','$email','$password')";
-        if ($conn->query($insertQuery) == TRUE) {
+        $updateQuery = "UPDATE users SET firstName='$firstName', lastName='$lastName', email='$email', password='$password',admin_id='$role' WHERE id='$id'";
+        if ($conn->query($updateQuery) == TRUE) {
             ?>
             <script>
                 Swal.fire({
-                    title:"Success",
+                    title: "Success",
                     text: "Successfully Registered",
                     icon: "success"
+                }).then(function () {
+                    window.location = 'viewAdmin.php'
                 })
             </script>
 
             <?php
-           
+
 
         } else {
-            echo "Error:" . $conn->error;
+            ?>
+            <script>
+                Swal.fire({
+                    title: "Error",
+                    text: "Something went wrong",
+                    icon: "error"
+                })
+            </script>
+            <?php
         }
     }
 
 
-}
-?>
+
+    ?>
 
     <!-- navbar -->
     <?php include "navbar.php" ?>
@@ -79,46 +87,45 @@ if (isset($_POST['submit'])) {
                 <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
 
                     <div class="card">
-                        <h5 class="text-center mb-4">ADD NEW ADMIN</h5>
+                        <h5 class="text-center mb-4">UPDATE ADMIN</h5>
                         <form class="form-card" method="post">
                             <div class="row justify-content-between text-left">
                                 <div class="form-group col-sm-6 flex-column d-flex"> <label
                                         class="form-control-label px-3">First name<span class="text-danger">
                                             *</span></label> <input type="text" id="fname" name="fname"
-                                        placeholder="Enter Emoloyee's first name" onblur="validate(1)"> </div>
+                                        value="<?= $admin ?>"> </div>
                                 <div class="form-group col-sm-6 flex-column d-flex"> <label
                                         class="form-control-label px-3">Last name<span class="text-danger">
                                             *</span></label>
-                                    <input type="text" id="lname" name="lname" placeholder="Enter Emoloyee's last name"
-                                        onblur="validate(2)">
+                                    <input type="text" id="lname" name="lname" value="<?= $adminlast ?>">
                                 </div>
                             </div>
                             <div class="row justify-content-between text-left">
                                 <div class="form-group col-sm-6 flex-column d-flex"> <label
                                         class="form-control-label px-3">Email Address<span class="text-danger">
                                             *</span></label> <input type="text" id="email" name="username"
-                                        placeholder="Enter Emoloyee's Email" onblur="validate(3)"> </div>
+                                        value="<?= $adminemail ?>"> </div>
                                 <div class="form-group col-sm-6 flex-column d-flex"> <label
                                         class="form-control-label px-3">Password<span class="text-danger">
                                             *</span></label> <input type="password" id="mob" name="password"
-                                        placeholder="Enter Emoloyee's Mobile Number" onblur="validate(4)"> </div>
+                                        placeholder="Enter New Password" onblur="validate(4)"> </div>
                             </div>
                             <div class="row justify-content-between text-left">
                                 <div class="form-group col-sm-12 flex-column d-flex"> <label
-                                        class="form-control-label px-3">Job title<span class="text-danger">
+                                        class="form-control-label px-3">Role<span class="text-danger">
                                             *</span></label>
-                                    <select type="text" id="job" name="role" placeholder="" onblur="validate(5)">
-                                        <option selected disabled>Select a role</option>
+                                    <select type="text" id="job" name="role" value="<?= $role ?>">
+                                        <option selected disabled>Select New Role</option>
                                         <option value="2">Admin</option>
                                         <option value="3">Sub Admin</option>
-                                        
+
                                     </select>
                                 </div>
-                                
-                            <div class="row justify-content-center">
-                                <div class="form-group col-sm-6"> <button type="submit" class="btn-block "
-                                        style="background: rgb(125,125,235);" name="submit" >Save</button> </div>
-                            </div>
+
+                                <div class="row justify-content-center">
+                                    <div class="form-group col-sm-6"> <button type="submit" class="btn-block "
+                                            style="background: rgb(125,125,235);" name="submit">Update</button> </div>
+                                </div>
                         </form>
                     </div>
                 </div>
@@ -129,15 +136,10 @@ if (isset($_POST['submit'])) {
 
     <!-- javascript -->
     <script src="js/formValidation1.js"></script>
-    
-   
+
+
 
 
 </body>
 
 </html>
-<?php
-}else{
-    header("Location: index.php");
-}
-?>

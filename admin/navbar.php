@@ -1,7 +1,4 @@
-<?php
-session_start();
-include "../helper/connect.php";
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,7 +96,7 @@ include "../helper/connect.php";
             <a class="nav-link ms-4 me-4 me-lg-3" href="#">Contact</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link btn btn-danger" href="helper/logout.php">Logout</a>
+            <a class="nav-link btn btn-danger" href="../helper/logout.php">Logout</a>
           </li>
         </ul>
       </div>

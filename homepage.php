@@ -1,9 +1,7 @@
 <?php
-session_start();
-include("helper/connect.php");
-
-?>
-
+include "session.php";
+if($email){
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -253,4 +251,12 @@ Hello
 
 </body>
 </html>
+    <?php
+
+}else{
+    header("Location: index.php");
+}
+?>
+
+
 

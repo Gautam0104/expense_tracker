@@ -1,8 +1,7 @@
 <?php
-session_start();
-include "../helper/connect.php";
-
-?>
+include "../session.php";
+if($email){
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,6 +51,7 @@ include "../helper/connect.php";
                         <th>Expense Time</th>
                         <th>Expense Amount</th>
                         <th>Expense Reason</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -70,6 +70,21 @@ include "../helper/connect.php";
                                         <td><?= $value['exp_t'] ?></td>
                                         <td><?= $value['amount'] ?></td>
                                         <td><?= $value['reason'] ?></td>
+                                        <td>
+                                        <a href="editExp.php?
+                                id=<?= $value['id'] ?>&
+                                emp=<?= $value['emp_name'] ?>&
+                                date=<?= $value['exp_d'] ?>&
+                                time=<?= $value['exp_t'] ?>&
+                                amount=<?= $value['amount'] ?>&
+                                reason=<?= $value['reason'] ?>
+                                ">
+                                            <span><i class="fas fa-edit fa-fw me-3"></i></span>
+                                        </a>
+                                            <a href="deleteExp.php?id=<?= $value['id'] ?>">
+                                                <span class="danger"><i class="fas  fa-trash fa-fw me-3" style="color:red;"></i></span>
+                                            </a>
+                                        </td>
                                     </tr>
                                     <?php
 
@@ -98,3 +113,9 @@ include "../helper/connect.php";
 </body>
 
 </html>
+<?php
+
+}else{
+    header("Location: ../index.php");
+}
+?>

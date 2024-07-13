@@ -1,3 +1,7 @@
+<?php
+include "session.php";
+if($email){
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +44,7 @@
 
         </div>
         <div class="card m-4 shadow">
-        <h5 class="text-center m-4">IF YOU WANT PARTICULAR EXPENSES OF ANY ADMIN</h5>
+            <h5 class="text-center m-4">IF YOU WANT PARTICULAR EXPENSES OF ANY ADMIN</h5>
             <form class="form-card" method="post">
                 <div class="row justify-content-center text-left">
                     <div class="form-group col-sm-6 flex-column d-flex">
@@ -73,6 +77,7 @@
                         <th>Expense Time</th>
                         <th>Expense Amount</th>
                         <th>Expense Reason</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -81,7 +86,7 @@
                     if (isset($_POST['search'])) {
                         error_reporting(0);
                         $search = $_POST['username'];
-                        
+
 
                         foreach ($expenses as $key => $value) {
                             if ($search == $value['emp_name']) {
@@ -96,6 +101,21 @@
                                     <td><?= $value['exp_t'] ?></td>
                                     <td><?= $value['amount'] ?></td>
                                     <td><?= $value['reason'] ?></td>
+                                    <td>
+                                        <a href="editExp.php?
+                                id=<?= $value['id'] ?>&
+                                emp=<?= $value['emp_name'] ?>&
+                                date=<?= $value['exp_d'] ?>&
+                                time=<?= $value['exp_t'] ?>&
+                                amount=<?= $value['amount'] ?>&
+                                reason=<?= $value['reason'] ?>
+                                ">
+                                            <span><i class="fas fa-edit fa-fw me-3"></i></span>
+                                        </a>
+                                        <a href="deleteExp.php?id=<?= $value['id'] ?>">
+                                            <span class="danger"><i class="fas  fa-trash fa-fw me-3" style="color:red;"></i></span>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <?php
                             }
@@ -112,7 +132,7 @@
 
                                 </script>
                                 <?php
-                                 error_reporting(0);
+                                error_reporting(0);
                             }
                         }
 
@@ -128,6 +148,21 @@
                                 <td><?= $value['exp_t'] ?></td>
                                 <td><?= $value['amount'] ?></td>
                                 <td><?= $value['reason'] ?></td>
+                                <td>
+                                    <a href="editExp.php?
+                                id=<?= $value['id'] ?>&
+                                emp=<?= $value['emp_name'] ?>&
+                                date=<?= $value['exp_d'] ?>&
+                                time=<?= $value['exp_t'] ?>&
+                                amount=<?= $value['amount'] ?>&
+                                reason=<?= $value['reason'] ?>
+                                ">
+
+                                        <span><i class="fas fa-edit fa-fw me-3"></i></span></a>
+                                    <a href="deleteExp.php?id=<?= $value['id'] ?>">
+                                        <span class="danger"><i class="fas  fa-trash fa-fw me-3" style="color:red;"></i></span>
+                                    </a>
+                                </td>
                             </tr>
                             <?php
                         }
@@ -148,3 +183,9 @@
 </body>
 
 </html>
+<?php
+
+}else{
+    header("Location: index.php");
+}
+?>

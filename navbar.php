@@ -60,7 +60,7 @@
               class="fas  fa-user fa-fw me-3"></i><span>Add Admin</span></a>
           <a href="expenses.php" class="list-group-item list-group-item-action py-2 ripple"><i
               class="fas fa-user fa-fw me-3"></i><span>Add Expenses</span></a>
-          <a href="viewEmp.php" class="list-group-item list-group-item-action py-2 ripple">
+          <a href="viewAdmin.php" class="list-group-item list-group-item-action py-2 ripple">
             <i class="fas fa-book fa-fw me-3"></i><span>View Admin</span>
           </a>
           <a href="viewExp.php" class="list-group-item list-group-item-action py-2 ripple">
